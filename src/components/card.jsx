@@ -5,7 +5,7 @@ function Card({ image, name, status,category, starNumber, job, videoNumber, call
   const renderStars = () => {
     const stars = [];
 
-    for (let i = 0; i < starNumber; i++) {
+    for (let i = 0; i < starNumber; i++) {      // yıldız sayısı kadar yıl font u ekliyor
       stars.push(
         <i key={i} className="fa-solid fa-star text-blueOne text-center"></i>
       );
