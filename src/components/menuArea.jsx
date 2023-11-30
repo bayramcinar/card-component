@@ -4,7 +4,7 @@ import "../style/menuArea.css"
 function MenuArea({ onButtonClick }) {
   const [activeButton, setActiveButton] = useState("");
 
-  const handleClick = (buttonId) => {
+  const handleClick = (buttonId) => { // tıkladığımız menünün id sini app.js e döndürüyor ve ona active class ı ekliyor
     onButtonClick(buttonId);
     setActiveButton(buttonId);
   };
