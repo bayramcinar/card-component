@@ -181,16 +181,23 @@ function App() {
     },
   ];
 
+  function isMobile() {
+    const mediaQuery = window.matchMedia('(max-width: 500px)');
+    console.log(mediaQuery.matches)
+    return mediaQuery.matches;
+  }
+
   const filteredEmployees = clickedButtonId
   ? employees.filter((employee) => employee.category === clickedButtonId)
   : employees;
+
   
   return (
     <div className="App bg-bgColour">
       <PageHeader />
       <MenuArea onButtonClick={handleButtonClick}/>
-      <div  className='cardArea flex overflow-x-auto transition-all duration-1500 ease-in-out ml-auto mr-auto touch-auto max-w-screen-lg' ref={cardAreaRef} style={{ scrollBehavior: 'smooth',overflow:"hidden"}}> 
-        <div className={`previousButton flex justify-center items-center absolute left-8 top-1/2 `} onClick={scrollLeft}>
+      <div  className='cardArea flex overflow-x-auto transition-all duration-1500 ease-in-out ml-auto mr-auto touch-pan-x max-w-screen-lg' ref={cardAreaRef} style={{ scrollBehavior: 'smooth', touchAction: 'pan-x', overflow: isMobile() ? '' : 'hidden' }}> 
+        <div className={`previousButton flex justify-center items-center absolute left-8 top-1/2 `} onClick={scrollLeft} style={{display: isMobile() ? "none" : ""}}>
           <button className='p-3'><i className={`fa-solid fa-circle-left text-4xl ${ isAtLeftEdge ? "text-buttonEnd" : "text-buttonColor"}`}></i></button>
         </div>
         {filteredEmployees.map((employee, index) => {
@@ -212,7 +219,7 @@ function App() {
             />
           );
         })}
-        <div className={`nextButton flex justify-center items-center absolute right-8 top-1/2 `} onClick={scrollRight}>
+        <div className={`nextButton flex justify-center items-center absolute right-8 top-1/2`} onClick={scrollRight} style={{display: isMobile() ? "none" : ""}}>
           <button className='p-3'><i className={`fa-solid fa-circle-right text-4xl ${ isAtRightEdge ? "text-buttonEnd" : "text-buttonColor"}`}></i></button>
         </div>
       </div>
@@ -220,8 +227,5 @@ function App() {
   );
 }
 
-function isMobile() {
-  return window.innerWidth <= 768;
-}
 
 export default App;

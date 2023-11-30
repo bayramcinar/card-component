@@ -20,11 +20,13 @@ function Card({ image, name, status,category, starNumber, job, videoNumber, call
         <div className='mb-3 flex h-full flex-col justify-between'>
           <div>
             <div className='imageArea w-full flex flex-col items-center justify-center'>
-              <img
-                src={image}
-                className={`w-28 rounded-full ${status ? `border-2 ${status === 'Çevrim içi' ? 'border-blueOne' : 'border-redOne'}` : ''}`}
-                alt=""
-              />
+              <Link to={"/"}>
+                <img
+                  src={image}
+                  className={`w-28 rounded-full ${status ? `border-2 ${status === 'Çevrim içi' ? 'border-blueOne' : 'border-redOne'}` : ''}`}
+                  alt=""
+                />
+              </Link>
               {status && (
                 <span className={`status bg-lightBlue ${status === 'Çevrim içi' ? 'text-blueOne' : 'text-redOne'} px-3 py-1 rounded-2xl text-sm border-${status === 'Çevrim içi' ? 'blueOne' : 'redOne'} border relative bottom-3.5`}>
                   {status}
@@ -35,28 +37,30 @@ function Card({ image, name, status,category, starNumber, job, videoNumber, call
               {renderStars()}
             </div>
             <div className='nameArea mt-2'>
-              <h3 className='text-center font-semibold'>{name}</h3>
+              <Link to={"/"}>
+                <h3 className='text-center font-semibold'>{name}</h3>
+              </Link>  
             </div>
             <div className='jobArea mt-2'>
-              <h4 className='text-center font-thin text-gray-600 text-sm'>{job}</h4>
+              <h4 className='text-center font-normal text-gray-600 text-sm'>{job}</h4>
             </div>
             <div className='infoArea flex justify-center mt-2'>
               <div className='videoCall ml-2'>
                 <i className="fa-solid fa-video text-blueOne"></i>
-                <span className='ml-2'>{videoNumber}</span>
+                <span className='ml-2 font-normal text-xs mb-2'>{videoNumber}</span>
               </div>
               <div className='call ml-2'>
                 <i className="fa-solid fa-phone text-blueOne"></i>
-                <span className='ml-2'>{callNumber}</span>
+                <span className='ml-2 font-normal text-xs mb-1'>{callNumber}</span>
               </div>
               <div className='language ml-2'>
                 <i className="fa-solid fa-globe text-blueOne"></i>
-                <span className='ml-2'>{language}</span>
+                <span className='ml-2 font-normal text-xs mb-1'>{language}</span>
               </div>
             </div>
             <div className='skillsArea mt-2 flex flex-wrap justify-center text-sm'>
               {skills.slice(0, showedSkillsNumber).map((skill, index) => (
-                <Link className='  m-1 w-max  my-1 mr-2 rounded-full bg-gray-50 px-3 py-1 text-xs font-myBold text-themeBlack hover:border-transparent hover:bg-gray-100' key={index}>{skill}</Link>
+                <Link className='  m-1 w-max  my-1 mr-2 rounded-full bg-skillsBg px-3 py-1 text-xs font-myBold text-themeBlack hover:border-transparent hover:bg-gray-200' key={index}>{skill}</Link>
               ))}
             </div>
           </div>

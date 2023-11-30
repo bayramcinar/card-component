@@ -25,7 +25,8 @@ module.exports = {
         grayOne: "#e6e4e5",
         bgColour: "#fcfcfc",
         buttonColor:"#40769f",
-        buttonEnd: "#99f6e4"
+        buttonEnd: "#99f6e4",
+        skillsBg: "#dedede"
       }
     },
   },
