@@ -8,6 +8,11 @@ function App() {
 
   const handleButtonClick = (id) => {
     setClickedButtonId(id);
+    if (cardAreaRef.current) {
+      cardAreaRef.current.scrollLeft = 0;
+      setIsAtLeftEdge(true); 
+      setIsAtRightEdge(false);
+    }
   };
 
   useEffect(() => {
