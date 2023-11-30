@@ -6,24 +6,23 @@ import PageHeader from './components/pageHeader';
 function App() {
   const [clickedButtonId, setClickedButtonId] = useState(null);
 
-  const handleButtonClick = (id) => {
+  const handleButtonClick = (id) => {    // Menüler arasında geçiş yapıyor ve menü değiştiğinde scroll u en başa atıyor
     setClickedButtonId(id);
     if (cardAreaRef.current) {
-      cardAreaRef.current.scrollLeft = 0;
-      setIsAtLeftEdge(true); 
+      cardAreaRef.current.scrollLeft = 0;        
+      setIsAtLeftEdge(true);                    
       setIsAtRightEdge(false);
     }
   };
 
   useEffect(() => {
-    console.log(clickedButtonId);
   }, [clickedButtonId]);
 
   const cardAreaRef = useRef(null);
   const [isAtLeftEdge, setIsAtLeftEdge] = useState(true);
   const [isAtRightEdge, setIsAtRightEdge] = useState(false);
 
-  const scrollLeft = () => {
+  const scrollLeft = () => {          // butonlara scroll u sola kaydırma fonksiyonu
     if (cardAreaRef.current) {
       cardAreaRef.current.scrollLeft -= cardAreaRef.current.offsetWidth / 1.8;
       setIsAtRightEdge(false);
@@ -32,7 +31,7 @@ function App() {
     setIsAtLeftEdge(isAtLeftEdge);
   };
 
-  const scrollRight = () => {
+  const scrollRight = () => {        // butonlara scroll u sağa kaydırma fonksiyonu
     if (cardAreaRef.current) {
       cardAreaRef.current.scrollLeft += cardAreaRef.current.offsetWidth / 1.8;
       setIsAtLeftEdge(false);
@@ -186,7 +185,7 @@ function App() {
     },
   ];
 
-  function isMobile() {
+  function isMobile() {                    // ekranın mobil olup olmadığını kontrol ediyor buna göre mobil ekranda sağ ve sol butonları kaldırıyor
     const mediaQuery = window.matchMedia('(max-width: 500px)');
     console.log(mediaQuery.matches)
     return mediaQuery.matches;
