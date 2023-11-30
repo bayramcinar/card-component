@@ -187,11 +187,10 @@ function App() {
 
   function isMobile() {                    // ekranın mobil olup olmadığını kontrol ediyor buna göre mobil ekranda sağ ve sol butonları kaldırıyor
     const mediaQuery = window.matchMedia('(max-width: 500px)');
-    console.log(mediaQuery.matches)
     return mediaQuery.matches;
   }
 
-  const filteredEmployees = clickedButtonId
+  const filteredEmployees = clickedButtonId        // seçilen menüye göre çalışanları listeliyor
   ? employees.filter((employee) => employee.category === clickedButtonId)
   : employees;
 
